@@ -1,6 +1,6 @@
 # This script fills in the recipes for Mystical Agriculture's Dye Essence.
 # Since we don't want the cheap dye essence to produce valuables,
-# Ee use the Oredict to look for "generic" dyes registered by some other
+# We use the Oredict to look for "generic" dyes registered by some other
 # mod such as Biomes O'Plenty.  Naturally, such dyes must exist to get recipes!
 
 var Edye = <mysticalagriculture:dye_essence>;
