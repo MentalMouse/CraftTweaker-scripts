@@ -3,7 +3,7 @@
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
 
-#var Edirt = <mysticalagriculture:dirt_essence>;
+var Edirt = <mysticalagriculture:dirt_essence>;
 var Enature = <mysticalagriculture:nature_essence>;
 var Edye = <mysticalagriculture:dye_essence>;
 var Eend = <mysticalagriculture:end_essence>;
