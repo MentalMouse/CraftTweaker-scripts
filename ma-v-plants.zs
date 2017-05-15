@@ -9,7 +9,7 @@ var Edye = <mysticalagriculture:dye_essence>;
 var Eend = <mysticalagriculture:end_essence>;
 
 # Tall Grass
-recipes.addShaped(<minecraft:grass:1> * 6, [
+recipes.addShaped(<minecraft:tallgrass:1> * 6, [
 	 [null, null, null],
 	 [Enature, null, Enature],
 	 [Enature, null, Enature]]
@@ -23,14 +23,14 @@ recipes.addShaped(<minecraft:double_plant:2> * 4, [
 	);
 	
 # Fern
-recipes.addShaped(<minecraft:grass:1> * 6, [
+recipes.addShaped(<minecraft:tallgrass:2> * 6, [
 	 [null, Enature, null],
 	 [Enature, Enature, Enature],
 	 [null, null, null]]
 	);
 	
 # Tall Fern
-recipes.addShaped(<minecraft:double_plant:2> * 4, [
+recipes.addShaped(<minecraft:double_plant:3> * 4, [
 	 [null, Enature, null],
 	 [Enature, null, Enature],
 	 [Enature, Enature, Enature]]

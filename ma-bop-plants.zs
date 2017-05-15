@@ -46,7 +46,7 @@ recipes.addShaped(<biomesoplenty:flower_vine> * 16, [
 # Turnips:  3->12 like beets, mirror beet recipe
 recipes.addShaped(<biomesoplenty:turnip> * 12, [
 	 [null, null, Enature],
-	 [Enature, Enature, null],
+	 [Enature, null, null],
 	 [null, null, Enature]
 	]);
 
