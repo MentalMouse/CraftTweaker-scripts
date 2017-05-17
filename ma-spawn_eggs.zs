@@ -130,106 +130,132 @@ for i, egg in Mob_egg {
 # Some monsters don't have their own chunk/essence, so mix in some extras.
 # Some of these are default-disabled for gameplay or balance.
 ###########################################################################
+var potionH =<minecraft:splash_potion>.withTag({Potion:
+   "minecraft:strong_harming"});
+var emerald = <minecraft:emerald>;
 
 # Squid
-  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-	{id: "minecraft:squid"}}), [
-        [<minecraft:dye:0>,
-	 <mysticalagriculture:tier1_mob_chunk>,
-	 <minecraft:dye:0>],
-	[<mysticalagriculture:tier1_mob_chunk>,
-	 <minecraft:egg>,
-	 <mysticalagriculture:tier1_mob_chunk>],
-	[<minecraft:water_bucket>,
-	 <mysticalagriculture:tier1_mob_chunk>,
-	 <minecraft:water_bucket>]
-	]);
+
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+        {id: "minecraft:squid"}}), [
+    [<minecraft:dye:0>,
+     <mysticalagriculture:tier1_mob_chunk>,
+     <minecraft:dye:0>],
+    [<mysticalagriculture:tier1_mob_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:tier1_mob_chunk>],
+    [<minecraft:water_bucket>,
+     <mysticalagriculture:tier1_mob_chunk>,
+     <minecraft:water_bucket>]
+]);
 
 
 # Cave Spider:  More spidery, with stone for the caves
-  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:cave_spider"}}), [
-        [<mysticalagriculture:spider_essence>,
-	 <mysticalagriculture:spider_chunk>,
-	 <mysticalagriculture:spider_essence>],
-	[<mysticalagriculture:spider_chunk>, <minecraft:egg>, <mysticalagriculture:spider_chunk>],
-        [<mysticalagriculture:stone_essence>,
-	 <mysticalagriculture:spider_chunk>,
-	 <mysticalagriculture:stone_essence>]
-	]);
+    [<mysticalagriculture:spider_essence>,
+     <mysticalagriculture:spider_chunk>,
+     <mysticalagriculture:spider_essence>],
+    [<mysticalagriculture:spider_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:spider_chunk>],
+    [<mysticalagriculture:stone_essence>,
+     <mysticalagriculture:spider_chunk>,
+     <mysticalagriculture:stone_essence>]
+]);
 
 # Zombie Pigman -- using skelly chunks for tier, pig chunks, gold and nether
 # 2 gold essence equals one ingot, which should be enough to prevent "PROFIT!!!"
-  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-	{id: "minecraft:zombie_pigman"}}), [
-        [<mysticalagriculture:gold_essence>,
-	 <mysticalagriculture:pig_chunk>,
-	 <mysticalagriculture:gold_essence>],
-	[<mysticalagriculture:skeleton_chunk>,
-	 <minecraft:egg>,
-	 <mysticalagriculture:skeleton_chunk>],
-	[<mysticalagriculture:nether_essence>,
-	 <mysticalagriculture:pig_chunk>,
-	 <mysticalagriculture:nether_essence>]
-	]);
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+        {id: "minecraft:zombie_pigman"}}), [
+    [<mysticalagriculture:gold_essence>,
+     <mysticalagriculture:pig_chunk>,
+     <mysticalagriculture:gold_essence>],
+    [<mysticalagriculture:skeleton_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:skeleton_chunk>],
+    [<mysticalagriculture:nether_essence>,
+     <mysticalagriculture:pig_chunk>,
+     <mysticalagriculture:nether_essence>]
+]);
 
 # Magma Cube -- nether and fire, might warrant a tier boost
-  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:magma_cube"}}), [
-        [<mysticalagriculture:fire_essence>,
-	 <mysticalagriculture:slime_chunk>,
-	 <mysticalagriculture:fire_essence>],
-	[<mysticalagriculture:slime_chunk>,
-	 <minecraft:egg>,
-	 <mysticalagriculture:slime_chunk>],
-	[<mysticalagriculture:nether_essence>,
-	 <mysticalagriculture:slime_chunk>,
-	 <mysticalagriculture:nether_essence>]
-	]);
+    [<mysticalagriculture:fire_essence>,
+     <mysticalagriculture:slime_chunk>,
+     <mysticalagriculture:fire_essence>],
+    [<mysticalagriculture:slime_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:slime_chunk>],
+    [<mysticalagriculture:nether_essence>,
+     <mysticalagriculture:slime_chunk>,
+     <mysticalagriculture:nether_essence>]
+]);
 
 # Mooshroom -- cow plus dirt and nature.
 # Default disabled for rarity, may warrant tier 3 essence.
-#  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #	{id: "minecraft:mooshroom"}}), [
-#        [<mysticalagriculture:nature_essence>,
-#	 <mysticalagriculture:cow_chunk>,
-#	 <mysticalagriculture:nature_essence>],
-#	[<mysticalagriculture:cow_chunk>,
-#	 <minecraft:egg>,
-#	 <mysticalagriculture:cow_chunk>],
-#	[<mysticalagriculture:dirt_essence>,
-#	 <mysticalagriculture:cow_chunk>,
-#	 <mysticalagriculture:dirt_essence>]
-#	]);
+#    [<mysticalagriculture:nature_essence>,
+#     <mysticalagriculture:cow_chunk>,
+#     <mysticalagriculture:nature_essence>],
+#    [<mysticalagriculture:cow_chunk>,
+#     <minecraft:egg>,
+#     <mysticalagriculture:cow_chunk>],
+#    [<mysticalagriculture:dirt_essence>,
+#     <mysticalagriculture:cow_chunk>,
+#     <mysticalagriculture:dirt_essence>]
+#    ]);
 
 # Polar bear.  Generic chunks; tier 3 because they're rare but useless
-  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:polar_bear"}}), [
-       [<minecraft:fish>,
-	 <mysticalagriculture:tier3_mob_chunk>,
-	 <minecraft:ice>],
-	[<mysticalagriculture:tier3_mob_chunk>,
-	 <minecraft:egg>,
-	 <mysticalagriculture:tier3_mob_chunk>],
-	[<minecraft:ice>,
-	 <mysticalagriculture:tier3_mob_chunk>,
-	 <minecraft:fish>]
-	]);
+    [<minecraft:fish>,
+     <mysticalagriculture:tier3_mob_chunk>,
+     <minecraft:ice>],
+    [<mysticalagriculture:tier3_mob_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:tier3_mob_chunk>],
+    [<minecraft:ice>,
+     <mysticalagriculture:tier3_mob_chunk>,
+     <minecraft:fish>]
+]);
 
 # Witch.  Generic chunks, tier 4.  Splash potion of harming, emeralds
-  var potionH=<minecraft:splash_potion>.withTag({Potion:
-   "minecraft:strong_harming"});
-  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:witch"}}), [
-        [potionH,
-	 <mysticalagriculture:tier4_mob_chunk>,
-	 <minecraft:emerald>],
-	[<mysticalagriculture:tier4_mob_chunk>,
-	 <minecraft:egg>,
-	 <mysticalagriculture:tier4_mob_chunk>],
-	[<minecraft:emerald>,
-	 <mysticalagriculture:tier4_mob_chunk>,
-	 potionH]
+    [potionH, <mysticalagriculture:tier4_mob_chunk>, emerald],
+    [<mysticalagriculture:tier4_mob_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:tier4_mob_chunk>],
+    [emerald, <mysticalagriculture:tier4_mob_chunk>, potionH]
+]);
+
+# Villager.  Generic chunks (tier 4), emeralds.
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:villager"}}), [
+    [emerald,
+     <mysticalagriculture:tier4_mob_chunk>,
+     emerald],
+    [<mysticalagriculture:tier4_mob_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:tier4_mob_chunk>],
+    [<minecraft:emerald>,
+     <mysticalagriculture:tier4_mob_chunk>,
+     emerald]
+]);
+
+# Villager Zombie.  Generic chunks (tier 3), emeralds.  Yeah, regular zombie
+# eggs can produce a villager zombie, at 10% chance.  Certainty is expensive.
+# Could make it tier 4, for that matter, they're not that hard to cure.
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:villager_zombie"}}), [
+    [emerald, <mysticalagriculture:tier3_mob_chunk>, emerald],
+    [<mysticalagriculture:tier3_mob_chunk>,
+     <minecraft:egg>,
+     <mysticalagriculture:tier3_mob_chunk>],
+    [<minecraft:emerald>, <mysticalagriculture:tier3_mob_chunk>, emerald]
 	]);
 
 # Elder guardian.  Tier 5 upgrade to guardian, because of mining fatigue
@@ -238,11 +264,12 @@ for i, egg in Mob_egg {
 #var supremium = <mysticalagriculture:supremium_essence>;
 #recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #	{id: "minecraft:elder_guardian"}}), [
-#        [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium],
-#	[<mysticalagriculture:tier5_mob_chunk>,
-#	 <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:guardian"}}),
-#	 <mysticalagriculture:tier5_mob_chunk>],
-#	[supremium, <mysticalagriculture:tier5_mob_chunk>, supremium]
+#    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium],
+#    [<mysticalagriculture:tier5_mob_chunk>,
+#     <minecraft:spawn_egg>.onlyWithTag({EntityTag:
+#	{id: "minecraft:guardian"}}),
+#     <mysticalagriculture:tier5_mob_chunk>],
+#    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium]
 #	]);
 
 
@@ -253,84 +280,84 @@ for i, egg in Mob_egg {
 #######################################################################
 
 # Wolf
-#  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #	{id: "minecraft:wolf"}}), [
-#        [<mysticalagriculture:intermedium_essence>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:name_tag>],
-#	[<mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:egg>,
-#	 <mysticalagriculture:tier3_mob_chunk>],
-#	[<minecraft:name_tag>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <mysticalagriculture:intermedium_essence>]
-#	]);
+#    [<mysticalagriculture:intermedium_essence>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:name_tag>],
+#    [<mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:egg>,
+#     <mysticalagriculture:tier3_mob_chunk>],
+#    [<minecraft:name_tag>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <mysticalagriculture:intermedium_essence>]
+#]);
 
 # Ocelot
-#  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #	{id: "minecraft:ocelot"}}), [
-#        [<mysticalagriculture:intermedium_essence>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:fish>],
-#	[<mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:egg>,
-#	 <mysticalagriculture:tier3_mob_chunk>],
-#	[<minecraft:fish>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <mysticalagriculture:intermedium_essence>]
-#	]);
+#    [<mysticalagriculture:intermedium_essence>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:fish>],
+#    [<mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:egg>,
+#     <mysticalagriculture:tier3_mob_chunk>],
+#    [<minecraft:fish>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <mysticalagriculture:intermedium_essence>]
+#]);
 
 # Horse:  It was saddles or golden apples, and tier 5 of MA lets you fly.
-#  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #	{id: "minecraft:horse"}}), [
-#        [<mysticalagriculture:intermedium_essence>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:saddle>],
-#	[<mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:egg>,
-#	 <mysticalagriculture:tier3_mob_chunk>],
-#	[<minecraft:saddle>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <mysticalagriculture:intermedium_essence>]
-#	]);
+#    [<mysticalagriculture:intermedium_essence>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:saddle>],
+#    [<mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:egg>,
+#     <mysticalagriculture:tier3_mob_chunk>],
+#    [<minecraft:saddle>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <mysticalagriculture:intermedium_essence>]
+#]);
 
 # Zombie and Skeleton Horses:  Adding wither essence to make it undead.
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:zombie_horse"}}), [
-        [<mysticalagriculture:wither_skeleton_essence>,
-	 <mysticalagriculture:zombie_essence>,
-	 null],
-	[<mysticalagriculture:zombie_essence>,
-	 <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
-	 <mysticalagriculture:zombie_essence>],
-	[null,
-	 <mysticalagriculture:zombie_essence>,
-	 <mysticalagriculture:wither_skeleton_essence>]
-	]);
+    [<mysticalagriculture:wither_skeleton_essence>,
+     <mysticalagriculture:zombie_essence>,
+     null],
+    [<mysticalagriculture:zombie_essence>,
+     <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
+     <mysticalagriculture:zombie_essence>],
+    [null,
+     <mysticalagriculture:zombie_essence>,
+     <mysticalagriculture:wither_skeleton_essence>]
+]);
 
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:skeleton_horse"}}), [
-        [<mysticalagriculture:wither_skeleton_essence>,
-	 <mysticalagriculture:skeleton_essence>,
-	 null],
-	[<mysticalagriculture:skeleton_essence>,
-	 <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
-	 <mysticalagriculture:skeleton_essence>],
-	[null,
-	 <mysticalagriculture:skeleton_essence>,
-	 <mysticalagriculture:wither_skeleton_essence>]
-	]);
+    [<mysticalagriculture:wither_skeleton_essence>,
+     <mysticalagriculture:skeleton_essence>,
+     null],
+    [<mysticalagriculture:skeleton_essence>,
+     <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
+     <mysticalagriculture:skeleton_essence>],
+    [null,
+     <mysticalagriculture:skeleton_essence>,
+     <mysticalagriculture:wither_skeleton_essence>]
+]);
 
 # Llama
-#  recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #	{id: "minecraft:llama"}}), [
-#        [<mysticalagriculture:intermedium_essence>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:carpet>],
-#	[<mysticalagriculture:tier3_mob_chunk>,
-#	 <minecraft:egg>,
-#	 <mysticalagriculture:tier3_mob_chunk>],
-#	[<minecraft:carpet>,
-#	 <mysticalagriculture:tier3_mob_chunk>,
-#	 <mysticalagriculture:intermedium_essence>]
-#	]);
+#    [<mysticalagriculture:intermedium_essence>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:carpet>],
+#    [<mysticalagriculture:tier3_mob_chunk>,
+#     <minecraft:egg>,
+#     <mysticalagriculture:tier3_mob_chunk>],
+#    [<minecraft:carpet>,
+#     <mysticalagriculture:tier3_mob_chunk>,
+#     <mysticalagriculture:intermedium_essence>]
+#]);
