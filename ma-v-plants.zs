@@ -10,38 +10,45 @@ var Eend = <mysticalagriculture:end_essence>;
 
 # Tall Grass
 recipes.addShaped(<minecraft:tallgrass:1> * 6, [
-	 [null, null, null],
-	 [Enature, null, Enature],
-	 [Enature, null, Enature]]
-	);
+    [null, null, null],
+    [Enature, null, Enature],
+    [Enature, null, Enature]
+    ]);
 	
 # Double Tall Grass
 recipes.addShaped(<minecraft:double_plant:2> * 4, [
-	 [Enature, null, Enature],
-	 [Enature, null, Enature],
-	 [Enature, null, Enature]]
-	);
+    [Enature, null, Enature],
+    [Enature, null, Enature],
+    [Enature, null, Enature]
+    ]);
 	
 # Fern
 recipes.addShaped(<minecraft:tallgrass:2> * 6, [
-	 [null, Enature, null],
-	 [Enature, Enature, Enature],
-	 [null, null, null]]
-	);
+    [null, Enature, null],
+    [Enature, Enature, Enature],
+    [null, null, null]
+    ]);
 	
 # Tall Fern
 recipes.addShaped(<minecraft:double_plant:3> * 4, [
-	 [null, Enature, null],
-	 [Enature, null, Enature],
-	 [Enature, Enature, Enature]]
-	);
+    [null, Enature, null],
+    [Enature, null, Enature],
+    [Enature, Enature, Enature]
+    ]);
 
 # dead bush
 recipes.addShaped(<minecraft:deadbush> * 6, [
-	 [null, Enature, null],
-	 [Enature, Enature, Enature],
-	 [null, Edirt, null]]
-	);
+    [null, Enature, null],
+    [Enature, Enature, Enature],
+    [null, Edirt, null]
+    ]);
+
+# Apple
+recipes.addShaped(<minecraft:apple> * 8, [
+    [null, null, null],
+    [Enature, null, Enature],
+    [null, null, null]
+    ]);
 
 
 # Perhaps should require a sample.
@@ -49,7 +56,7 @@ recipes.addShaped(<minecraft:chorus_flower> * 4, [
 	 [Enature, Eend, Enature],
 	 [Eend, null, Eend],
 	 [Enature, Eend, Enature]
-	]);
+	 ]);
 
 # Get a little more than for BoP flowers, because these give only 1 dye.
 # For the two-high flowers, use bonemeal or one of MA's 2 super-bonemeals.
@@ -70,7 +77,7 @@ for flower in Flower4 {
     recipes.addShaped(flower * 4, [
 	 [null, null, null],
 	 [Enature, flower, Enature],
-	 [null, Edye, null]]
-	);
+	 [null, Edye, null]
+	 ]);
 }
 

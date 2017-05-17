@@ -3,15 +3,18 @@
 #
 # Due to the multitude of recipes, most of them are based on duplicating
 #     a sample with a pattern.
+# May 16 2017:  Wood and saplings too.
+# May 17 2017:  Fruit and formatting
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
 
+# If it's only used once, it doesn't get a variable
 var Edirt = <mysticalagriculture:dirt_essence>;
 var Ewood = <mysticalagriculture:wood_essence>;
 # var Estone = <mysticalagriculture:stone_essence>;
 var Enature = <mysticalagriculture:nature_essence>;
-# var Enether = <mysticalagriculture:nether_essence>;
+var Enether = <mysticalagriculture:nether_essence>;
 # var Efire = <mysticalagriculture:fire_essence>;
 # var Eice = <mysticalagriculture:ice_essence>;
 var Ewater = <mysticalagriculture:water_essence>;
@@ -70,39 +73,39 @@ var burning_blossom = <biomesoplenty:flower_0:15>;
 recipes.addShaped(poison_ivy * 4, [
     [null, <mysticalagriculture:spider_essence>, null],
     [Enature, poison_ivy, Enature],
-    [null, Enature, null]]
-    );
+    [null, Enature, null]
+    ]);
 
 recipes.addShaped(deathbloom * 3, [
-	 [null, <mysticalagriculture:wither_skeleton_essence>, null],
-	 [Enature, deathbloom, Enature],
-	 [null, Edye, null]]
-	);
+    [null, <mysticalagriculture:wither_skeleton_essence>, null],
+    [Enature, deathbloom, Enature],
+    [null, Edye, null]
+    ]);
 	
 recipes.addShaped(enderlotus * 3, [
-	 [null, <mysticalagriculture:end_essence>, null],
-	 [Enature, enderlotus, Enature],
-	 [null, Edye, null]]
-	);
+    [null, <mysticalagriculture:end_essence>, null],
+    [Enature, enderlotus, Enature],
+    [null, Edye, null]
+    ]);
 
 # Could include Efire.
 recipes.addShaped(burning_blossom * 3, [
-	 [null, <mysticalagriculture:nether_essence>, null],
-	 [Enature, burning_blossom, Enature],
-	 [null, Edye, null]]
-	);
+    [null, Enether, null],
+    [Enature, burning_blossom, Enature],
+    [null, Edye, null]
+    ]);
 	
 recipes.addShaped(eyebulb * 4, [
-         [null, <mysticalagriculture:nether_essence>, null],
-	 [Enature, eyebulb, Enature],
-    	 [null, Enature, null]]
-	 );
+    [null, Enether, null],
+    [Enature, eyebulb, Enature],
+    [null, Enature, null]
+    ]);
 
 recipes.addShaped(devilweed * 6, [
-    [null, <mysticalagriculture:nether_essence>, null],
+    [null, Enether, null],
     [Enature, devilweed, Enature],
-    [null, Enature, null]]
-    );
+    [null, Enature, null]
+    ]);
 
 ###################################################################
 # Water Lilies.  5 types: Vanilla, medium, small, tiny, flowered 
@@ -121,8 +124,8 @@ for lily in Water_Lily {
     recipes.addShaped(lily * 8, [
 	 [Enature, Enature, Enature],
 	 [Enature, lily, Enature],
-	 [null, Enature, null]]
-	);
+	 [null, Enature, null]
+	 ]);
 }
 
 ###################################################################
@@ -154,8 +157,8 @@ for i, plant in Plant6 {
     recipes.addShaped(plant * 6, [
 	 [null, Enature, null],
 	 [Enature, plant, Enature],
-	 [null, Enature, null]]
-	);
+	 [null, Enature, null]
+	 ]);
 }
 
 ###################################################################
@@ -193,8 +196,8 @@ for i, flower in Flower3 {
     recipes.addShaped(flower * 3, [
 	 [null, null, null],
 	 [Enature, flower, Enature],
-	 [null, Edye, null]]
-	);
+	 [null, Edye, null]
+	 ]);
 }
 
 ###################################################################
@@ -212,8 +215,8 @@ for i, coral in Coral {
     recipes.addShaped(coral * 4, [
 	 [null, null, null],
 	 [Enature, coral, Enature],
-	 [null, Ewater, null]]
-	);
+	 [null, Ewater, null]
+	 ]);
 }
 
 #######################################################################
@@ -224,42 +227,181 @@ for i, coral in Coral {
 recipes.addShaped(<biomesoplenty:mushroom:0> * 8, [
     [null, <biomesoplenty:mushroom:0>, null],
     [Enature, Edirt, Enature],
-    [null, null, null]]
-    );
+    [null, null, null]
+    ]);
 
 # Portobello
 recipes.addShaped(<biomesoplenty:mushroom:1> * 8, [
     [null, <biomesoplenty:mushroom:1>, null],
     [Enature, Edirt, Enature],
-    [null, null, null]]
-    );
+    [null, null, null]
+    ]);
 
 # Blue Milk Cap
 recipes.addShaped(<biomesoplenty:mushroom:2> * 4, [
     [null, <biomesoplenty:mushroom:2>, null],
     [Enature, Edirt, Enature],
-    [null, Edye, null]]
-    );
+    [null, Edye, null]
+    ]);
 
 # Glowshroom (free glow)
 recipes.addShaped(<biomesoplenty:mushroom:3> * 4, [
     [null, <biomesoplenty:mushroom:3>, null],
     [Enature, Edirt, Enature],
-    [null, Edye, null]]
-    );
+    [null, Edye, null]
+    ]);
 
 # Flat Mushroom
 recipes.addShaped(<biomesoplenty:mushroom:4> * 4, [
     [null, <biomesoplenty:mushroom:4>, null],
     [Enature, Edirt, Enature],
-    [null, Edye, null]]
-    );
+    [null, Edye, null]
+    ]);
 
 # Shadow Shroom
 recipes.addShaped(<biomesoplenty:mushroom:5> * 8, [
     [null, <biomesoplenty:mushroom:5>, null],
     [Enature, Edirt, Enature],
-    [null, null, null]]
-    );
+    [null, null, null]
+    ]);
 
+
+#######################################################################
+#  Wood and Saplings
+
+# This section is somewhat dubious, simply because some of these are
+# meant not to grow as much wood, or not drop as many (or any) saplings.
+# I've disabled a few, re-enable them if you insist.  You do still need
+#  samples to duplicate them, which lets out "Ethereal" trees.
+# Hellbark gets its own recipe with Nether essence.
+
+var Wood = [
+#    <biomesoplenty:log_0:4>,	// Sacred Oak
+    <biomesoplenty:log_0:5>,	// Cherry
+    <biomesoplenty:log_0:6>,	// Umbran
+    <biomesoplenty:log_0:7>,	// Fir
+#    <biomesoplenty:log_1:4>,	// Ethereal (unused)
+#    <biomesoplenty:log_1:5>,	// Magic
+    <biomesoplenty:log_1:6>,	// Mangrove
+    <biomesoplenty:log_1:7>,	// Palm
+    <biomesoplenty:log_2:4>,	// Redwood
+    <biomesoplenty:log_2:5>,	// Willow
+    <biomesoplenty:log_2:6>,	// Pine
+#    <biomesoplenty:log_2:7>,	// Hellbark (individual recipe)
+    <biomesoplenty:log_3:4>,	// Jacaranda
+    <biomesoplenty:log_3:5>,	// Mahogany
+    <biomesoplenty:log_3:6>,	// Ebony
+    <biomesoplenty:log_3:7>,	// Eucalyptus
+
+#    <biomesoplenty:log_4:4>,	// Giant Flower Stem
+    <biomesoplenty:log_4:5>,	// Dead wood
+    <biomesoplenty:bamboo>	// Bamboo
+] as IItemStack[];
+
+var Saplings = [
+    <biomesoplenty:sapling_0:0>,	// Yellow Autumn
+    <biomesoplenty:sapling_0:1>,	// Orange Autumn
+    <biomesoplenty:sapling_0:2>,	// Bamboo
+#    <biomesoplenty:sapling_0:3>,	// Magic
+    <biomesoplenty:sapling_0:4>,	// Umbran
+    <biomesoplenty:sapling_0:5>,	// Dead
+    <biomesoplenty:sapling_0:6>,	// Fir
+#    <biomesoplenty:sapling_0:7>,	// Ethereal (unused)
+
+#    <biomesoplenty:sapling_1:0>,	// Origin
+    <biomesoplenty:sapling_1:1>,	// Pink Cherry
+    <biomesoplenty:sapling_1:2>,	// White Cherry
+    <biomesoplenty:sapling_1:3>,	// Maple
+#    <biomesoplenty:sapling_1:4>,	// Hellbark (individual recipe)
+    <biomesoplenty:sapling_1:5>,	// Flowering Oak
+    <biomesoplenty:sapling_1:6>,	// Jacaranda
+#    <biomesoplenty:sapling_1:7>,	// Sacred Oak
+
+    <biomesoplenty:sapling_2:0>,	// Mangrove
+    <biomesoplenty:sapling_2:1>,	// Palm
+    <biomesoplenty:sapling_2:2>,	// Redwood
+    <biomesoplenty:sapling_2:3>,	// Willow
+    <biomesoplenty:sapling_2:4>,	// Pine
+    <biomesoplenty:sapling_2:5>,	// Mahogany
+    <biomesoplenty:sapling_2:6>,	// Ebony
+    <biomesoplenty:sapling_2:7>	// Eucalyptus
+] as IItemStack[];
+
+
+for i, wood in Wood {
+    recipes.addShaped(wood * 16, [
+	 [null, Ewood, null],
+	 [Ewood, wood, Ewood],
+	 [null, Ewood, null]
+	 ]);
+}
+
+for i, sapling in Saplings {
+    recipes.addShaped(sapling * 4, [
+	 [null, sapling, null],
+	 [Ewood, Enature, Ewood],
+	 [null, null, null]
+	 ]);
+}
+
+# Individual Recipes
+
+# Hellbark
+var hellbark_wood = <biomesoplenty:log_2:7>;
+var hellbark_sapling = <biomesoplenty:sapling_1:4>;
+
+recipes.addShaped(hellbark_wood * 8, [
+    [null, Enether, null],
+    [Ewood, hellbark_wood, Ewood],
+    [null, Ewood, null]
+    ]);
+    
+recipes.addShaped(hellbark_sapling * 4, [
+    [null, hellbark_sapling, null],
+    [Ewood, Enature, Ewood],
+    [null, Enether, null]
+    ]);
+
+#######################################################################
+# Fruits:  peach, pear, persimmon, pinecone, berry
+
+var peach = <biomesoplenty:peach>;
+var pear = <biomesoplenty:pear>;
+var persimmon = <biomesoplenty:persimmon>;
+var pinecone = <biomesoplenty:pinecone>;
+var berry = <biomesoplenty:berries>;
+
+recipes.addShaped(peach * 8, [
+	 [null, null, null],
+	 [Enature, peach, Enature],
+	 [null, null, null]
+	 ]);
+
+recipes.addShaped(pear * 8, [
+	 [null, null, null],
+	 [Enature, pear, Enature],
+	 [null, null, null]
+	 ]);
+
+recipes.addShaped(persimmon * 8, [
+	 [null, null, null],
+	 [Enature, persimmon, Enature],
+	 [null, null, null]
+	 ]);
+
+recipes.addShaped(pinecone * 4, [  // dye again
+	 [null, Edye, null],
+	 [Enature, pinecone, Enature],
+	 [null, null, null]
+	 ]);
+
+recipes.addShaped(berry * 16, [
+	 [null, null, null],
+	 [Enature, berry, Enature],
+	 [null, null, null]
+	 ]);
+
+#######################################################################
+#  Future Developments:
+# More nether stuff:  Honey/comb?   Ashes?
 
