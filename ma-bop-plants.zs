@@ -3,6 +3,7 @@
 #
 # Due to the multitude of recipes, most of them are based on duplicating
 #     a sample with a pattern.
+# May 16 2017:  Wood and saplings too.
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
@@ -262,4 +263,88 @@ recipes.addShaped(<biomesoplenty:mushroom:5> * 8, [
     [null, null, null]]
     );
 
+
+#######################################################################
+#  Wood and Saplings
+
+# This section is somewhat dubious, simply because some of these are
+# meant not to grow as much wood, or not drop as many (or any) saplings.
+# I've disabled some, re-enable them if you insist.
+#  (Remembering that you do need samples to duplicate!)
+
+var Wood = [
+#    <biomesoplenty:log_0:4>,	// Sacred Oak
+    <biomesoplenty:log_0:5>,	// Cherry
+    <biomesoplenty:log_0:6>,	// Umbran
+    <biomesoplenty:log_0:7>,	// Fir
+#    <biomesoplenty:log_1:4>,	// Ethereal
+#    <biomesoplenty:log_1:5>,	// Magic
+    <biomesoplenty:log_1:6>,	// Mangrove
+    <biomesoplenty:log_1:7>,	// Palm
+    <biomesoplenty:log_2:4>,	// Redwood
+    <biomesoplenty:log_2:5>,	// Willow
+    <biomesoplenty:log_2:6>,	// Pine
+#    <biomesoplenty:log_2:7>,	// Hellbark
+    <biomesoplenty:log_3:4>,	// Jacaranda
+    <biomesoplenty:log_3:5>,	// Mahogany
+    <biomesoplenty:log_3:6>,	// Ebony
+    <biomesoplenty:log_3:7>,	// Eucalyptus
+
+#    <biomesoplenty:log_4:4>,	// Giant Flower Stem
+    <biomesoplenty:log_4:5>,	// Dead wood
+    <biomesoplenty:bamboo>	// Bamboo
+] as IItemStack[];
+
+var Saplings = [
+    <biomesoplenty:sapling_0:0>,	// Yellow Autumn
+    <biomesoplenty:sapling_0:1>,	// Orange Autumn
+    <biomesoplenty:sapling_0:2>,	// Bamboo
+#    <biomesoplenty:sapling_0:3>,	// Magic
+    <biomesoplenty:sapling_0:4>,	// Umbran
+    <biomesoplenty:sapling_0:5>,	// Dead
+    <biomesoplenty:sapling_0:6>,	// Fir
+#    <biomesoplenty:sapling_0:7>,	// Ethereal
+
+#    <biomesoplenty:sapling_1:0>,	// Origin
+    <biomesoplenty:sapling_1:1>,	// Pink Cherry
+    <biomesoplenty:sapling_1:2>,	// White Cherry
+    <biomesoplenty:sapling_1:3>,	// Maple
+#    <biomesoplenty:sapling_1:4>,	// Hellbark
+    <biomesoplenty:sapling_1:5>,	// Flowering Oak
+    <biomesoplenty:sapling_1:6>,	// Jacaranda
+#    <biomesoplenty:sapling_1:7>,	// Sacred Oak
+
+    <biomesoplenty:sapling_2:0>,	// Mangrove
+    <biomesoplenty:sapling_2:1>,	// Palm
+    <biomesoplenty:sapling_2:2>,	// Redwood
+    <biomesoplenty:sapling_2:3>,	// Willow
+    <biomesoplenty:sapling_2:4>,	// Pine
+    <biomesoplenty:sapling_2:5>,	// Mahogany
+    <biomesoplenty:sapling_2:6>,	// Ebony
+    <biomesoplenty:sapling_2:7>	// Eucalyptus
+] as IItemStack[];
+
+
+for i, wood in Wood {
+    recipes.addShaped(wood * 12, [
+	 [null, Ewood, null],
+	 [Ewood, wood, Ewood],
+	 [null, Ewood, null]]
+	);
+}
+
+for i, sapling in Saplings {
+    recipes.addShaped(sapling * 4, [
+	 [null, sapling, null],
+	 [Ewood, Enature, Ewood],
+	 [null, null, null]]
+	);
+}
+
+
+#######################################################################
+#  Future Developments:
+# Fruits:  peach, pear, persimmon, pinecone, berry
+#  On second thought, apples aren't normally provided by MA.
+# More nether stuff:  Honey/comb?   Ashes?
 
