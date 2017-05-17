@@ -7,9 +7,16 @@
 #
 #  Note:  Most of the mobs lacking species chunks require one of two gray
 #  intermediate eggs, the "Beast" or "Humanoid" spawn eggs.
-# Currently, JEI doesn't show the identifying names in the recipes using them.
+
+# Currently, Any spawn egg as an ingredient shows up as gray, with no
+# identifying names.
 #  However, both recipes will show up if you look at the recipe for any
 #  spawn egg, and the names do show in output.
+#  In fact,  even ordinary mob eggs
+# show up as anonymous gray eggs in recipes;  Currently affected are:
+# Spider->Cave Spider, Skeleton->Zombie Pigman, Slime->Magma Cube,
+#  Guardian-> Elder Guardian, Cow--> Mooshroom, and
+#  Horse-> Zombie/Skeleton Horse.
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
