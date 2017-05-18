@@ -3,20 +3,11 @@
 # Note that spawn eggs need to be specified differently when they're inputs.
 # Updated 2017-05-17
 # Not (yet?) done: donkey, mule, husk, stray, silverfish, endermites,
-#      	     	   shulkers, illagers, bats
+#      	     	   shulkers, illagers, bats, any BoP mobs.
 #
 #  Note:  Most of the mobs lacking species chunks require one of two gray
 #  intermediate eggs, the "Beast" or "Humanoid" spawn eggs.
-
-# Currently, Any spawn egg as an ingredient shows up as gray, with no
-# identifying names.
-#  However, both recipes will show up if you look at the recipe for any
-#  spawn egg, and the names do show in output.
-#  In fact,  even ordinary mob eggs
-# show up as anonymous gray eggs in recipes;  Currently affected are:
-# Spider->Cave Spider, Skeleton->Zombie Pigman, Slime->Magma Cube,
-#  Guardian-> Elder Guardian, Cow--> Mooshroom, and
-#  Horse-> Zombie/Skeleton Horse.
+#  These can be distinguished by their names/hovertext.
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
@@ -142,9 +133,13 @@ var person_egg_output = <minecraft:spawn_egg>
 	.withTag({EntityTag: {id: "craftable:person"}})
         .withTag({display: {Name: "Humanoid Crafting Egg"}});
 var beast_egg_input = <minecraft:spawn_egg>
-    	.onlyWithTag({EntityTag: {id: "craftable:beast"}})
+    	.withTag({EntityTag: {id: "craftable:beast"}})
+        .withTag({display: {Name: "Beast Crafting Egg"}})
+    	.onlyWithTag({EntityTag: {id: "craftable:beast"}}) 
         .onlyWithTag({display: {Name: "Beast Crafting Egg"}});
 var person_egg_input = <minecraft:spawn_egg>
+	.withTag({EntityTag: {id: "craftable:person"}})
+        .withTag({display: {Name: "Humanoid Crafting Egg"}})
     	.onlyWithTag({EntityTag: {id: "craftable:person"}})
         .onlyWithTag({display: {Name: "Humanoid Crafting Egg"}});
 
@@ -188,14 +183,16 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:cave_spider"}}), [
     [null, <mysticalagriculture:spider_essence>, null],
     [<mysticalagriculture:stone_essence>,
-    <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:spider"}}),
+    <minecraft:spawn_egg>
+        .withTag({EntityTag: {id: "minecraft:spider"}})
+	.onlyWithTag({EntityTag: {id: "minecraft:spider"}}),
      <mysticalagriculture:stone_essence>],
     [null,
      <mysticalagriculture:spider_essence>,
      null]
 ]);
 
-# Zombie Pigman -- using skelly egg for tier, plus pig chunks, gold and nether
+# Zombie Pigman -- using skelly egg for tier, plus pig chunks, gold and nether.
 # 1 gold essence equals a half ingot, with the other essences this
 #   should be enough to prevent "PROFIT!!!"
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
@@ -204,7 +201,9 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
      <mysticalagriculture:pig_chunk>,
      intermedium],
     [<mysticalagriculture:pig_chunk>,
-    <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:skeleton"}}),
+    <minecraft:spawn_egg>
+        .withTag({EntityTag: {id: "minecraft:skeleton"}})
+	.onlyWithTag({EntityTag: {id: "minecraft:skeleton"}}),
      <mysticalagriculture:pig_chunk>],
     [intermedium,
      <mysticalagriculture:pig_chunk>,
@@ -218,7 +217,9 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
      intermedium,
      <mysticalagriculture:fire_essence>],
     [intermedium,
-    <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:slime"}}),
+    <minecraft:spawn_egg>
+	.withTag({EntityTag: {id: "minecraft:slime"}})
+	.onlyWithTag({EntityTag: {id: "minecraft:slime"}}),
      intermedium],
     [<mysticalagriculture:nether_essence>,
      intermedium,
@@ -227,14 +228,18 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 
 # Mooshroom -- cow plus mushrooms and Tier 3 essence
 # Default disabled for rarity
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:mooshroom"}}), [
-#	 [<minecraft:red_mushroom>, intermedium, <minecraft:brown_mushroom>],
-#        [intermedium,
-#         <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:cow"}}),
-#         intermedium],
-#        [<minecraft:red_mushroom>, intermedium, <minecraft:brown_mushroom>]
-#]);
+/*
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:mooshroom"}}), [
+	 [<minecraft:red_mushroom>, intermedium, <minecraft:brown_mushroom>],
+        [intermedium,
+         <minecraft:spawn_egg>
+		.withTag({EntityTag: {id: "minecraft:cow"}})
+		.onlyWithTag({EntityTag: {id: "minecraft:cow"}}),
+         intermedium],
+        [<minecraft:red_mushroom>, intermedium, <minecraft:brown_mushroom>]
+]);
+*/
 
 # Polar bear.  No boost, because they're rare but useless
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
@@ -281,79 +286,92 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 
 # Elder guardian.  Tier 5 upgrade to guardian, because of mining fatigue
 # Default disabled, for same reason
-
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:elder_guardian"}}), [
-#    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium],
-#    [<mysticalagriculture:tier5_mob_chunk>,
-#     <minecraft:spawn_egg>.onlyWithTag({EntityTag:
-#	{id: "minecraft:guardian"}}),
-#     <mysticalagriculture:tier5_mob_chunk>],
-#    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium]
-#]);
-
+/*
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:elder_guardian"}}), [
+    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium],
+    [<mysticalagriculture:tier5_mob_chunk>,
+     <minecraft:spawn_egg>
+	.withTag({EntityTag: {id: "minecraft:guardian"}})
+	.onlyWithTag({EntityTag: {id: "minecraft:guardian"}}),
+     <mysticalagriculture:tier5_mob_chunk>],
+    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium]
+]);
+*/
 
 #######################################################################
 # Tameables:   I've somewhat arbitrarily made them tier 3.
 # All are default-disabled.  They should spawn untamed.
 #######################################################################
-
 # Wolf
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:wolf"}}), [
-#    [null, <minecraft:name_tag>, null],
-#    [<minecraft:bone>, beast_egg_input, <minecraft:bone>],
-#    [null, <minecraft:name_tag>, null]
-#]);
+/*
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:wolf"}}), [
+    [null, <minecraft:name_tag>, null],
+    [<minecraft:bone>, beast_egg_input, <minecraft:bone>],
+    [null, <minecraft:name_tag>, null]
+]);
+*/
 
 # Ocelot
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:ocelot"}}), [
-#    [null, <minecraft:fish:0>, null],
-#    [<minecraft:fish:1>, beast_egg_input, <minecraft:fish:2>],
-#    [null, <ore:bed>, null]
-#]);
+/*
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:ocelot"}}), [
+    [null, <minecraft:fish:0>, null],
+    [<minecraft:fish:1>, beast_egg_input, <minecraft:fish:2>],
+    [null, <ore:bed>, null]
+]);
+*/
 
 # Horse:  It was saddles or golden apples, and tier 5 of MA lets you fly.
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:horse"}}), [
-#    [null, <minecraft:saddle>, null],
-#    [<minecraft:hay_block>, beast_egg_input, <minecraft:hay_block>],
-#    [null, <minecraft:saddle>, null]
-#]);
+/*
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:horse"}}), [
+    [null, <minecraft:saddle>, null],
+    [<minecraft:hay_block>, beast_egg_input, <minecraft:hay_block>],
+    [null, <minecraft:saddle>, null]
+]);
+*/
 
 # Zombie and Skeleton Horses:  Adding wither essence to make it undead.
+# Not default disabled... if you've got a horse spawn egg and the other
+#  essences, whatever.
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:zombie_horse"}}), [
+    [<mysticalagriculture:wither_skeleton_essence>,
+     <mysticalagriculture:zombie_essence>,
+     null],
+    [<mysticalagriculture:zombie_essence>,
+     <minecraft:spawn_egg>
+     	.withTag({EntityTag: {id: "minecraft:horse"}})
+	.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
+     <mysticalagriculture:zombie_essence>],
+    [null,
+     <mysticalagriculture:zombie_essence>,
+     <mysticalagriculture:wither_skeleton_essence>]
+]);
 
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:zombie_horse"}}), [
-#    [<mysticalagriculture:wither_skeleton_essence>,
-#     <mysticalagriculture:zombie_essence>,
-#     null],
-#    [<mysticalagriculture:zombie_essence>,
-#     <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
-#     <mysticalagriculture:zombie_essence>],
-#    [null,
-#     <mysticalagriculture:zombie_essence>,
-#     <mysticalagriculture:wither_skeleton_essence>]
-#]);
-
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:skeleton_horse"}}), [
-#    [<mysticalagriculture:wither_skeleton_essence>,
-#     <mysticalagriculture:skeleton_essence>,
-#     null],
-#    [<mysticalagriculture:skeleton_essence>,
-#     <minecraft:spawn_egg>.onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
-#     <mysticalagriculture:skeleton_essence>],
-#    [null,
-#     <mysticalagriculture:skeleton_essence>,
-#     <mysticalagriculture:wither_skeleton_essence>]
-#]);
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:skeleton_horse"}}), [
+    [<mysticalagriculture:wither_skeleton_essence>,
+     <mysticalagriculture:skeleton_essence>,
+     null],
+    [<mysticalagriculture:skeleton_essence>,
+     <minecraft:spawn_egg>
+	     .withTag({EntityTag: {id: "minecraft:horse"}})
+	     .onlyWithTag({EntityTag: {id: "minecraft:horse"}}),
+     <mysticalagriculture:skeleton_essence>],
+    [null,
+     <mysticalagriculture:skeleton_essence>,
+     <mysticalagriculture:wither_skeleton_essence>]
+]);
 
 # Llama
-#recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-#	{id: "minecraft:llama"}}), [
-#    [null, <minecraft:carpet:*>, null],
-#    [<minecraft:lead>, beast_egg_input, <minecraft:lead>],
-#    [null, <minecraft:carpet:*>, null]
-#]);
+/*
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:llama"}}), [
+    [null, <minecraft:carpet:*>, null],
+    [<minecraft:lead>, beast_egg_input, <minecraft:lead>],
+    [null, <minecraft:carpet:*>, null]
+]);
+*/
