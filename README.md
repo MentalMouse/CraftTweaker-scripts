@@ -3,17 +3,19 @@ A place for my CraftTweaker scripts.  So far, those all link Mystical Agricultur
 
 So far I have the following scripts:
 
-ma-spawn_eggs.zs:     Lets you use MA essences to make spawn eggs
+ma-spawn_eggs.zs:       Lets you use MA essences to make spawn eggs
 
-ma-ore_dyes.zs:       Fills in the missing 4 dye-essence recipes, using oredict dyes from other mods.
+ma-spawn_eggs-hard.zs:  More expensive (perhaps more balanced?) version of making spawn eggs.
 
-ma-quark-blocks.zs:   Recipes for blocks provided by Quark.
+ma-ore_dyes.zs:         Fills in the missing 4 dye-essence recipes, using oredict dyes from other mods.
 
-ma-bop-blocks.zs:     Recipes for blocks provided by Biomes O'Plenty
+ma-quark-blocks.zs:     Recipes for blocks provided by Quark.
 
-ma-bop-plants.zs:     Create or duplicate the various BoP plants and flowers.
+ma-bop-blocks.zs:       Recipes for blocks provided by Biomes O'Plenty
 
-ma-v-plants.zs:       Do the same for vanilla plants and flowers
+ma-bop-plants.zs:       Create or duplicate the various BoP plants and flowers. (now including wood/saplings)
+
+ma-v-plants.zs:         Create or duplicate vanilla plants and flowers.
 
 
 
