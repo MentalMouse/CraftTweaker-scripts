@@ -1,5 +1,5 @@
 # Let Mystical Agriculture provide Biome O'Plenty's dirt and stone types.
-
+# May 19 2017:  Hardened Ice
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
@@ -84,6 +84,13 @@ recipes.addShaped(<biomesoplenty:stone:2> * 16, [
 	 [null, Estone, null],
 	 [Estone, Ecoal, Estone],
 	 [null, Estone, null]
+	]);
+
+# <biomesoplenty:hard_ice>, Hardened Ice
+recipes.addShaped(<biomesoplenty:hard_ice> * 12, [
+	 [Eice, null, Eice],
+	 [null, Estone, null],
+	 [Eice, null, Eice]
 	]);
 
 # <biomesoplenty:flesh>, Flesh Block (nether)
