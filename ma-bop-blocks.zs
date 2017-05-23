@@ -1,5 +1,6 @@
 # Let Mystical Agriculture provide Biome O'Plenty's dirt and stone types.
 # May 19 2017:  Hardened Ice
+# May 22 2017:  Added Celestial Crystal, removed unused stone types.
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
@@ -13,6 +14,7 @@ var Eice = <mysticalagriculture:ice_essence>;
 var Ewater = <mysticalagriculture:water_essence>;
 var Ecoal = <mysticalagriculture:coal_essence>;
 var Eglow = <mysticalagriculture:glowstone_essence>;
+var Eend = <mysticalagriculture:end_essence>;
 
 # Plain dirt is 8->24,  coarse is 3->16, podzol is 3->8
 
@@ -66,6 +68,9 @@ recipes.addShaped(<biomesoplenty:dirt:0> * 24, [
 # <biomesoplenty:grass:6>, Overgrown Netherrack // in Nether biomes
 # <biomesoplenty:grass:7>, Flowering Grass	// Flower Island
 
+
+/*  # These are unused.
+
 # <biomesoplenty:stone:0>, Limestone
 recipes.addShaped(<biomesoplenty:stone:0> * 16, [
 	 [Ewater, Estone, null],
@@ -85,6 +90,7 @@ recipes.addShaped(<biomesoplenty:stone:2> * 16, [
 	 [Estone, Ecoal, Estone],
 	 [null, Estone, null]
 	]);
+*/
 
 # <biomesoplenty:hard_ice>, Hardened Ice
 recipes.addShaped(<biomesoplenty:hard_ice> * 12, [
@@ -98,5 +104,12 @@ recipes.addShaped(<biomesoplenty:flesh> * 16, [
 	 [null, Enether, null],
 	 [Enether, <minecraft:rotten_flesh>, Enether],
 	 [null, Estone, Enether]
+	]);
+
+# <biomesoplenty:crystal>, Celestial Crystal (End)
+recipes.addShaped(<biomesoplenty:crystal_shard> * 16, [
+	 [Eglow, Eend, Eglow],
+	 [Eend, null, Eend],
+	 [Eglow, Eend, Eglow]
 	]);
 
