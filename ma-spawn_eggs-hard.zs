@@ -1,13 +1,14 @@
 # Allow Mystical Agriculture's mob essences to recreate the mob.
 # This is the harder recipes, costing lots more essence.
 # Note that spawn eggs need to be specified differently when they're inputs.
-# Updated 2017-05-17
-# Not (yet?) done: donkey, mule, husk, stray, silverfish, endermites,
-#      	     	   shulkers, illagers, bats, any BoP mobs.
+# Not (yet?) done: mule, husk, stray, illagers, any BoP mobs.
 #
-#  Note:  Most of the mobs lacking species chunks require one of two gray
-#  intermediate eggs, the "Beast" or "Humanoid" spawn eggs.
-#  These can be distinguished by their names/hovertext.
+# Note:  Most of the mobs lacking species chunks require one of three
+# gray intermediate eggs, the "Critter", "Beast" or "Humanoid" spawn eggs.
+# These can be distinguished by their names (hovertext).
+#
+# Updated May-23-2017:  Shulkers, silverfish, endermite, bat, donkey
+# 	  		I think I'm pretty much done here.
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
@@ -119,29 +120,47 @@ for i, egg in Mob_egg {
 }
 
 ###########################################################################
-# Some monsters don't have their own chunk/essence, so mix in some extras.
-# Some of these are default-disabled for gameplay or balance.
+# Base Eggs:  Some monsters don't have their own chunk/essence, so we
+# start with a base egg and mix in some extras.
 ###########################################################################
-var potionH =<minecraft:splash_potion>.withTag({Potion:
-   "minecraft:strong_harming"});
-var emerald = <minecraft:emerald>;
+
+var critter_egg_output = <minecraft:spawn_egg>
+    	.withTag({EntityTag: {id: "craftable:critter"}})
+        .withTag({display: {Name: "Critter Crafting Egg"}});
+var critter_egg_input = <minecraft:spawn_egg>
+    	.withTag({EntityTag: {id: "craftable:critter"}})
+        .withTag({display: {Name: "Critter Crafting Egg"}})
+    	.onlyWithTag({EntityTag: {id: "craftable:critter"}}) 
+        .onlyWithTag({display: {Name: "Critter Crafting Egg"}});
 
 var beast_egg_output = <minecraft:spawn_egg>
     	.withTag({EntityTag: {id: "craftable:beast"}})
         .withTag({display: {Name: "Beast Crafting Egg"}});
-var person_egg_output = <minecraft:spawn_egg>
-	.withTag({EntityTag: {id: "craftable:person"}})
-        .withTag({display: {Name: "Humanoid Crafting Egg"}});
 var beast_egg_input = <minecraft:spawn_egg>
     	.withTag({EntityTag: {id: "craftable:beast"}})
         .withTag({display: {Name: "Beast Crafting Egg"}})
     	.onlyWithTag({EntityTag: {id: "craftable:beast"}}) 
         .onlyWithTag({display: {Name: "Beast Crafting Egg"}});
+
+var person_egg_output = <minecraft:spawn_egg>
+	.withTag({EntityTag: {id: "craftable:person"}})
+        .withTag({display: {Name: "Humanoid Crafting Egg"}});
 var person_egg_input = <minecraft:spawn_egg>
 	.withTag({EntityTag: {id: "craftable:person"}})
         .withTag({display: {Name: "Humanoid Crafting Egg"}})
     	.onlyWithTag({EntityTag: {id: "craftable:person"}})
         .onlyWithTag({display: {Name: "Humanoid Crafting Egg"}});
+
+# A base egg for various small creatures.
+recipes.addShaped(critter_egg_output, [
+    [<mysticalagriculture:tier1_mob_chunk>,
+     inferium,
+     <mysticalagriculture:tier1_mob_chunk>],
+    [inferium, <minecraft:egg>, inferium],
+    [<mysticalagriculture:tier1_mob_chunk>,
+     inferium,
+     <mysticalagriculture:tier1_mob_chunk> ]
+]);
 
 recipes.addShaped(beast_egg_output, [
     [<mysticalagriculture:tier3_mob_chunk>,
@@ -163,19 +182,88 @@ recipes.addShaped(person_egg_output, [
       <mysticalagriculture:tier4_mob_chunk> ]
 ]);
 
-# Squid -- cheap!
+##########################################################################
+# Critters
+##########################################################################
+
+# Squid -- cheap!  (Should using ore:dyeBlack be allowed?)
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
         {id: "minecraft:squid"}}), [
-    [<minecraft:dye:0>,
-     <mysticalagriculture:tier1_mob_chunk>,
-     inferium],
-    [<mysticalagriculture:tier1_mob_chunk>,
-     <minecraft:egg>,
-     <mysticalagriculture:tier1_mob_chunk>],
-    [inferium,
-     <mysticalagriculture:tier1_mob_chunk>,
-     <minecraft:water_bucket>]
+    [null, <minecraft:dye:0>, null],
+    [<minecraft:dye:0>, critter_egg_input, <minecraft:dye:0>],
+    [null, <minecraft:water_bucket>, null]
 ]);
+
+# Silverfish.  No, making silverfish isn't nasty.
+# Making Monster Eggs, that would be nasty.
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+        {id: "minecraft:silverfish"}}), [
+    [null, <minecraft:stonebrick:*>, null],
+    [<minecraft:stonebrick:*>, critter_egg_input, <minecraft:stonebrick:*>],
+    [null, <minecraft:stonebrick:*>, null]
+]);
+
+# And Endermites too!
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+        {id: "minecraft:endermite"}}), [
+    [null, <minecraft:ender_pearl>, null],
+    [<minecraft:ender_pearl>, critter_egg_input, <minecraft:ender_pearl>],
+    [null, <minecraft:ender_pearl>, null]
+]);
+
+# Pumpkin pie is a reference to the Pet Bats mod, which uses it to tame bats.
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+        {id: "minecraft:bat"}}), [
+    [null, <minecraft:pumpkin_pie>, null],
+    [<minecraft:pumpkin_pie>, critter_egg_input, <minecraft:pumpkin_pie>],
+    [null, <minecraft:pumpkin_pie>, null]
+]);
+
+/*
+# Monster Egg recipes, for nasty people.
+# Stone, Cobble, Stone Brick, Mossy Stone Brick, Cracked Stone Brick, Chiseled.
+var SFstone = [
+    <minecraft:stone>,
+    <minecraft:cobblestone>,
+    <minecraft:stonebrick:0>,
+    <minecraft:stonebrick:1>,
+    <minecraft:stonebrick:2>,
+    <minecraft:stonebrick:3>
+    ] as IIngredient[];
+    
+var SFMegg = [
+    <minecraft:monster_egg:0>,
+    <minecraft:monster_egg:1>,
+    <minecraft:monster_egg:2>,
+    <minecraft:monster_egg:3>,
+    <minecraft:monster_egg:4>,
+    <minecraft:monster_egg:5>
+    ] as IItemStack[];
+
+# Plenty of room for tier essence if you like.
+for i,stone in SFstone {
+    recipes.addShaped(SFMegg[i], [
+        [null, stone, null],
+        [null, <minecraft:spawn_egg>
+	       .withTag({EntityTag: {id: "minecraft:silverfish"}})
+	       .onlyWithTag({EntityTag:{id: "minecraft:silverfish"}}),
+         null],
+        [null, stone, null]
+    ]);
+}
+# Ain't I a stinker?
+
+*/
+
+
+##########################################################################
+# Main Mobs
+##########################################################################
+
+var potionH =<minecraft:splash_potion>.withTag({Potion:
+   "minecraft:strong_harming"});
+var emerald = <minecraft:emerald>;
+
 
 # Cave Spider:  More spidery, with stone for the caves.
 #  Maybe add extra intermedium?
@@ -226,9 +314,9 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
      <mysticalagriculture:nether_essence>]
 ]);
 
+/*
 # Mooshroom -- cow plus mushrooms and Tier 3 essence
 # Default disabled for rarity
-/*
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:mooshroom"}}), [
 	 [<minecraft:red_mushroom>, intermedium, <minecraft:brown_mushroom>],
@@ -249,6 +337,28 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
     [null, <minecraft:fish>, null]
 ]);
 
+
+/*
+# Elder guardian.  Tier 5 upgrade to guardian, because of mining fatigue
+# Default disabled, for same reason
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:elder_guardian"}}), [
+    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium],
+    [<mysticalagriculture:tier5_mob_chunk>,
+     <minecraft:spawn_egg>
+	.withTag({EntityTag: {id: "minecraft:guardian"}})
+	.onlyWithTag({EntityTag: {id: "minecraft:guardian"}}),
+     <mysticalagriculture:tier5_mob_chunk>],
+    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium]
+]);
+*/
+
+
+#######################################################################
+# "People":  Villager and derivatives, and one exotic mob.
+#  Who knows what minds lurk within those purple boxes?
+#######################################################################
+
 # Witch.  Person egg, Splash potion of harming, drops, emeralds
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:witch"}}), [
@@ -259,7 +369,8 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
     [emerald, <minecraft:glowstone_dust>, potionH]
 ]);
 
-# Villager.  person egg, emeralds, trades
+# Villager.  person egg, emeralds, trades.
+# Yes, this recipe is meant to be a PITA.  ;-)
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:villager"}}), [
     [emerald,
@@ -284,27 +395,38 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
     [<minecraft:emerald>, <mysticalagriculture:zombie_chunk>, emerald]
 ]);
 
-# Elder guardian.  Tier 5 upgrade to guardian, because of mining fatigue
-# Default disabled, for same reason
-/*
+
+# Shulker.  Person egg, *two* shulker shells, purpur, End essence.
+# This should probably be disabled if you can craft the shells in your game.
+# Unless you like that sort of thing, and are happy with the tier expenses.
+#
+# If you want to be cruel, tag them "{Color: 0}" (white).
+
+var Eend = <mysticalagriculture:end_essence>;
+
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
-	{id: "minecraft:elder_guardian"}}), [
-    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium],
-    [<mysticalagriculture:tier5_mob_chunk>,
-     <minecraft:spawn_egg>
-	.withTag({EntityTag: {id: "minecraft:guardian"}})
-	.onlyWithTag({EntityTag: {id: "minecraft:guardian"}}),
-     <mysticalagriculture:tier5_mob_chunk>],
-    [supremium, <mysticalagriculture:tier5_mob_chunk>, supremium]
+	{id: "minecraft:shulker"}}), [
+    [Eend, <minecraft:shulker_shell>, Eend],
+    [<minecraft:purpur_block>, person_egg_input,<minecraft:purpur_block>],
+    [Eend, <minecraft:shulker_shell>, Eend]
+]);
+
+/*
+# A potential recipe for shulker shells.  Default disabled.
+#  You could also replace the last two Eends with tier essence.
+
+recipes.addShaped(<minecraft:shulker_shell>, [
+    [Eend, Eend, Eend],
+    [Eend, <minecraft:end_rod>, Eend],
+    [Eend, superium, Eend]
 ]);
 */
 
 #######################################################################
-# Tameables:   I've somewhat arbitrarily made them tier 3.
-# All are default-disabled.  They should spawn untamed.
+# Tameables:  Most are default-disabled.  They should spawn untamed.
 #######################################################################
-# Wolf
 /*
+# Wolf
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:wolf"}}), [
     [null, <minecraft:name_tag>, null],
@@ -313,29 +435,43 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 ]);
 */
 
-# Ocelot
 /*
+# Ocelot
+# I have something in mind here, but I haven't figured out how to do it yet.
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:ocelot"}}), [
-    [null, <minecraft:fish:0>, null],
-    [<minecraft:fish:1>, beast_egg_input, <minecraft:fish:2>],
+    [null, <minecraft:name_tag>, null],
+    [<minecraft:fish:0>, beast_egg_input, <minecraft:fish:1>],
     [null, <ore:bed>, null]
 ]);
 */
 
-# Horse:  It was saddles or golden apples, and tier 5 of MA lets you fly.
 /*
+# Horse:  It was saddles or golden apples, and tier 5 of MA lets you fly.
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:horse"}}), [
     [null, <minecraft:saddle>, null],
     [<minecraft:hay_block>, beast_egg_input, <minecraft:hay_block>],
-    [null, <minecraft:saddle>, null]
+    [null, <minecraft:hay_block>, null]
 ]);
 */
 
+/*
+# Donkey:  Because some times you just feel like an ass.
+recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
+	{id: "minecraft:donkey"}}), [
+    [null, <minecraft:saddle>, null],
+    [<minecraft:hay_block>, beast_egg_input, <minecraft:hay_block>],
+    [null, <ore:chestWood>, null]
+]);
+*/
+
+
 # Zombie and Skeleton Horses:  Adding wither essence to make it undead.
 # Not default disabled... if you've got a horse spawn egg and the other
-#  essences, whatever.
+#  essences, go ahead and trade in your tameable, breedable mount, for an
+#  untameable, unbreedable monster.
+
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:zombie_horse"}}), [
     [<mysticalagriculture:wither_skeleton_essence>,
@@ -366,8 +502,9 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
      <mysticalagriculture:wither_skeleton_essence>]
 ]);
 
-# Llama
+
 /*
+# Llama
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:llama"}}), [
     [null, <minecraft:carpet:*>, null],
