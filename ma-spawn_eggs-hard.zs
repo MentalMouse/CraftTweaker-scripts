@@ -9,6 +9,7 @@
 #
 # Updated May-23-2017:  Shulkers, silverfish, endermite, bat, donkey
 # 	  		I think I'm pretty much done here.
+# 	  May-24-2017:  Nope...  Yet another fix to the crafting eggs.
 
 import minetweaker.item.IItemStack;
 import minetweaker.item.IIngredient;
@@ -125,31 +126,28 @@ for i, egg in Mob_egg {
 ###########################################################################
 
 var critter_egg_output = <minecraft:spawn_egg>
-    	.withTag({EntityTag: {id: "craftable:critter"}})
-        .withTag({display: {Name: "Critter Crafting Egg"}});
+    	.withTag({display: {Name: "Critter Crafting Egg"},
+		  EntityTag: {id: "craftable:critter"} } );
 var critter_egg_input = <minecraft:spawn_egg>
-    	.withTag({EntityTag: {id: "craftable:critter"}})
-        .withTag({display: {Name: "Critter Crafting Egg"}})
-    	.onlyWithTag({EntityTag: {id: "craftable:critter"}}) 
-        .onlyWithTag({display: {Name: "Critter Crafting Egg"}});
+    	.withTag({EntityTag: {id: "craftable:critter"},
+	          display: {Name: "Critter Crafting Egg"} } )
+    	.onlyWithTag({EntityTag: {id: "craftable:critter"}}) ;
 
 var beast_egg_output = <minecraft:spawn_egg>
-    	.withTag({EntityTag: {id: "craftable:beast"}})
-        .withTag({display: {Name: "Beast Crafting Egg"}});
+    	.withTag({EntityTag: {id: "craftable:beast"},
+		  display: {Name: "Beast Crafting Egg"}});
 var beast_egg_input = <minecraft:spawn_egg>
-    	.withTag({EntityTag: {id: "craftable:beast"}})
-        .withTag({display: {Name: "Beast Crafting Egg"}})
-    	.onlyWithTag({EntityTag: {id: "craftable:beast"}}) 
-        .onlyWithTag({display: {Name: "Beast Crafting Egg"}});
+    	.withTag({EntityTag: {id: "craftable:beast"},
+		  display: {Name: "Beast Crafting Egg"}})
+    	.onlyWithTag({EntityTag: {id: "craftable:beast"}}) ;
 
 var person_egg_output = <minecraft:spawn_egg>
-	.withTag({EntityTag: {id: "craftable:person"}})
-        .withTag({display: {Name: "Humanoid Crafting Egg"}});
+	.withTag({EntityTag: {id: "craftable:person"},
+		  display: {Name: "Humanoid Crafting Egg"}});
 var person_egg_input = <minecraft:spawn_egg>
-	.withTag({EntityTag: {id: "craftable:person"}})
-        .withTag({display: {Name: "Humanoid Crafting Egg"}})
-    	.onlyWithTag({EntityTag: {id: "craftable:person"}})
-        .onlyWithTag({display: {Name: "Humanoid Crafting Egg"}});
+	.withTag({EntityTag: {id: "craftable:person"},
+		  display: {Name: "Humanoid Crafting Egg"}})
+    	.onlyWithTag({EntityTag: {id: "craftable:person"}}) ;
 
 # A base egg for various small creatures.
 recipes.addShaped(critter_egg_output, [
@@ -260,9 +258,6 @@ for i,stone in SFstone {
 # Main Mobs
 ##########################################################################
 
-var potionH =<minecraft:splash_potion>.withTag({Potion:
-   "minecraft:strong_harming"});
-var emerald = <minecraft:emerald>;
 
 
 # Cave Spider:  More spidery, with stone for the caves.
@@ -359,6 +354,11 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 #  Who knows what minds lurk within those purple boxes?
 #######################################################################
 
+var potionH =<minecraft:splash_potion>.withTag({Potion:
+   "minecraft:strong_harming"});
+var emerald = <minecraft:emerald>;
+
+
 # Witch.  Person egg, Splash potion of harming, drops, emeralds
 recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 	{id: "minecraft:witch"}}), [
@@ -379,7 +379,7 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
     [<minecraft:bookshelf>,
      person_egg_input,
      <minecraft:cooked_porkchop>],
-    [<minecraft:emerald>,
+    [emerald,
      <minecraft:iron_shovel>,
      emerald]
 ]);
@@ -399,8 +399,6 @@ recipes.addShaped(<minecraft:spawn_egg>.withTag({EntityTag:
 # Shulker.  Person egg, *two* shulker shells, purpur, End essence.
 # This should probably be disabled if you can craft the shells in your game.
 # Unless you like that sort of thing, and are happy with the tier expenses.
-#
-# If you want to be cruel, tag them "{Color: 0}" (white).
 
 var Eend = <mysticalagriculture:end_essence>;
 
