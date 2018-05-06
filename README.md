@@ -1,6 +1,8 @@
 # CraftTweaker-scripts
 A place for my CraftTweaker scripts.  So far, those all link Mystical Agriculture with other mods.
 
+ETA 5/6/12:  All of these were written for MC 1.11.2 and the matching mods; they may need fixing for 1.12.2, much less 1.13.
+
 So far I have the following scripts:
 
 ma-spawn_eggs.zs:       Lets you use MA essences to make spawn eggs
@@ -14,7 +16,7 @@ ma-quark-blocks.zs:     Recipes for blocks provided by Quark.
 ma-bop-blocks.zs:       Recipes for blocks provided by Biomes O'Plenty
 
 ma-bop-plants.zs:       Create or duplicate the various BoP plants and flowers. (now including wood/saplings)
-
+                        
 ma-v-plants.zs:         Create or duplicate vanilla plants and flowers.
 
 
